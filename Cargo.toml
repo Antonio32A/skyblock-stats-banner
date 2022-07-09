@@ -1,0 +1,33 @@
+[package]
+name = "skyblock-stats"
+version = "0.1.0"
+authors = ["Antonio32A"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = ["console_error_panic_hook"]
+
+[dependencies]
+cfg-if = "0.1.2"
+worker = "0.0.9"
+serde = { version = "1.0.138", features = ["derive"] }
+serde_json = "1.0.67"
+image = "0.24.2"
+imageproc = "0.23.0"
+rusttype = "0.9.2"
+regex = "1.6.0"
+unwrap_or = "1.0.0"
+indexmap = "1.9.1"
+num-format = "0.4.0"
+futures = "0.3.21"
+
+console_error_panic_hook = { version = "0.1.1", optional = true }
+
+[profile.release]
+opt-level = "s"
+
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = true # Make sure to enable this when running wrangler publish.
